@@ -1,7 +1,9 @@
 # Simplified lamp docker receipt
 
-[port_rotate.sh](#port_rotate.sh)
+## Quick navigation:
 
+* [port_rotate.sh](#port_rotate.sh)
+* [setup_env.sh](#setup_env.sh)
 
 ## Prerequisites
 
@@ -24,3 +26,7 @@ Just create a folder called public in the same level as the project's folder (no
 ## `port_rotate.sh`
 
 Checks the `port_rotate.sh` script on project's root folder. Run this script to rise by 1 all ports setted in the `.env` file.
+
+## `setup_env.sh`
+
+Run this script to conveniently change the name from the environment.
