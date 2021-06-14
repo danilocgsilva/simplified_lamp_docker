@@ -4,6 +4,12 @@ set -e
 
 INTEREST_FILE=".env"
 
+if which gsed >> /dev/null; then
+    SEDC=gsed
+else
+    SEDC=sed
+fi
+
 if ! [ -f $INTEREST_FILE ]; then
     cp .env.example $INTEREST_FILE
 fi
@@ -18,7 +24,7 @@ update() {
 
     read -p "$MESSAGE_TRANSLATED " NEW_VALUE
     if ! [ -z $NEW_VALUE ]; then
-        sed -i "/$FILE_SEARCH_TERM/s/$CURRENT/$NEW_VALUE/g" $INTEREST_FILE
+        $SEDC -i "/$FILE_SEARCH_TERM/s/$CURRENT/$NEW_VALUE/g" $INTEREST_FILE
     fi
 }
 
@@ -32,7 +38,7 @@ CURRENT_SECURE_WEBSERVER_PORT=$(cat $INTEREST_FILE | grep NGINX_HOST_HTTPS_PORT 
     
 echo "Currently, the environment name is: $CURRENT_ENVIRONMENT_NAME"
 read -p "Give to the environment a new name: " NEW_ENVIRONMENT_NAME
-sed -i "/COMPOSE_PROJECT_NAME/s/$CURRENT_ENVIRONMENT_NAME/$NEW_ENVIRONMENT_NAME/g" $INTEREST_FILE
+$SEDC -i "/COMPOSE_PROJECT_NAME/s/$CURRENT_ENVIRONMENT_NAME/$NEW_ENVIRONMENT_NAME/g" $INTEREST_FILE
 echo "The new project name now is $NEW_ENVIRONMENT_NAME"
 
 update \
