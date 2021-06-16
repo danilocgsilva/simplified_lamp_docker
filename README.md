@@ -4,6 +4,7 @@
 
 * [port_rotate.sh](#port_rotate.sh)
 * [setup_env.sh](#setup_env.sh)
+* [envhere.sh](#envhere.sh)
 
 ## Prerequisites
 
@@ -30,3 +31,7 @@ Checks the `port_rotate.sh` script on project's root folder. Run this script to 
 ## `setup_env.sh`
 
 Run this script to conveniently change the name from the environment, database user, database password, database starting table and ports for http, https and mysql.
+
+## `envhere.sh`
+
+Put this file in `/usr/local/bin`, rename it to `envhere` (without file extension) and make it executable. Then execute anywhere in your system to clone a new project in the current folder.
