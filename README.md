@@ -29,4 +29,4 @@ Checks the `port_rotate.sh` script on project's root folder. Run this script to 
 
 ## `setup_env.sh`
 
-Run this script to conveniently change the name from the environment.
+Run this script to conveniently change the name from the environment, database user, database password, database starting table and ports for http, https and mysql.
