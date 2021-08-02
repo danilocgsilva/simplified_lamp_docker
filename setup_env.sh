@@ -37,8 +37,10 @@ CURRENT_WEBSERVER_PORT=$(cat $INTEREST_FILE | grep NGINX_HOST_HTTP_PORT | cut -f
 CURRENT_SECURE_WEBSERVER_PORT=$(cat $INTEREST_FILE | grep NGINX_HOST_HTTPS_PORT | cut -f2 -d=)
     
 echo "Currently, the environment name is: $CURRENT_ENVIRONMENT_NAME"
-read -p "Give to the environment a new name: " NEW_ENVIRONMENT_NAME
-$SEDC -i "/COMPOSE_PROJECT_NAME/s/$CURRENT_ENVIRONMENT_NAME/$NEW_ENVIRONMENT_NAME/g" $INTEREST_FILE
+read -p "Give to the environment a new name or keep blank to keep the name: " NEW_ENVIRONMENT_NAME
+if [ ! -z $NEW_ENVIRONMENT_NAME ]; then
+    $SEDC -i "/COMPOSE_PROJECT_NAME/s/$CURRENT_ENVIRONMENT_NAME/$NEW_ENVIRONMENT_NAME/g" $INTEREST_FILE
+fi
 echo "The new project name now is $NEW_ENVIRONMENT_NAME"
 
 update \
