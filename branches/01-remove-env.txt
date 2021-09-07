@@ -1,0 +1,1 @@
+A script to remove the requirement for .env file.
