@@ -24,7 +24,7 @@ It should be enough if you have some experience in Docker and in a lamp environm
 
 Just create a folder called public in the same level as the project's folder (not in the root, right aside from project's folder) and starts to write the site. Is there that the `index.html` or `index.php` file will be read.
 
-## `port_rotate.sh`
+## `port_rotate_env.sh`
 
 Checks the `port_rotate.sh` script on project's root folder. Run this script to rise by 1 all ports setted in the `.env` file.
 

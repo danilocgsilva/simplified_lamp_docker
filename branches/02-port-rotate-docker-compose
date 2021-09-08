@@ -1,0 +1,1 @@
+Separates de port rotate from .env file from docker-compose.yml file
