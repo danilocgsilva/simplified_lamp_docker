@@ -15,19 +15,10 @@ IFS=$'\n'
 for i in $(clean_env_output); do
     VARIABLE_NAME=$(echo $i | cut -f1 -d'=')
     VARIABLE_VALUE=$(echo $i | cut -f2 -d'=')
-    TERM_FOR_REPLACEMENT="\${$VARIABLE_NAME}"
-    echo ----
-    echo "The variable is $VARIABLE_NAME"
-    echo "The variable value is $VARIABLE_VALUE"
-    echo "The expected term in files is $TERM_FOR_REPLACEMENT"
-    TERM_FOR_REPLACEMENT_SCAPED=$(echo $TERM_FOR_REPLACEMENT | sed s/\{/{/g)
-    echo "The scaped term is $TERM_FOR_REPLACEMENT_SCAPED"
-    
-    #for j in $(grep -R "$TERM_FOR_REPLACEMENT" *); do
-    #    FILE_TO_REPLACE=$(echo $j | cut -f1 -d:)
-    #    echo File to replace: $FILE_TO_REPLACE
-    #    sed -i "s/${MARIADB_ENTRYPOINT_INITDB}/$VARIABLE_VALUE/g" $FILE_TO_REPLACE 
-    #done
-    echo ----
+    REPLACEMENT_TERM=\${$VARIABLE_NAME}
+    for i in $(grep -r $REPLACEMENT_TERM); do
+        FILE_FOUND=$(echo $i | cut -f1 -d:)
+        sed -i "s@$REPLACEMENT_TERM@$VARIABLE_VALUE@g" $FILE_FOUND
+    done
 done
 IFS=$ORIGINAL_IFS
