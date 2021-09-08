@@ -35,3 +35,7 @@ Run this script to conveniently change the name from the environment, database u
 ## `envhere.sh`
 
 Put this file in `/usr/local/bin`, rename it to `envhere` (without file extension) and make it executable. Then execute anywhere in your system to clone a new project in the current folder.
+
+## `remove_env.sh`
+
+Replaces all occurrences on `docker-compose.yml` that uses some variable from `.env` file, getting the values from `.env.example` file.
